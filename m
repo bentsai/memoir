@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
-import time
+import datetime
 import os
 import sys
 
 # add the current local time to the entry header
-lines = [ time.asctime() + '\n' ]
+lines = [ str(datetime.datetime.utcnow()) + '| ' ]
 
 if len( sys.argv ) > 1:
     lines.append( ' '.join( sys.argv[ 1: ] ) )
@@ -26,7 +26,7 @@ else:
 
 # only write the entry if the user entered something
 if len( lines ) > 1:
-    memoir_path = os.path.expanduser( '~/.memoir' )
+    memoir_path = os.path.expanduser( '~/public_html/.memoir' )
 
     # prepend a seperator only if the file exists ( there are entries already in there )
     if os.path.exists( memoir_path ):
